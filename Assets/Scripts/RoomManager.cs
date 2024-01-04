@@ -30,11 +30,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
      public override void OnJoinedLobby()
     {
-    //     base.OnJoinedLobby();
+        base.OnJoinedLobby();
 
-    //     PhotonNetwork.JoinOrCreateRoom("test", null , null);
+        PhotonNetwork.JoinOrCreateRoom("test", null , null);
 
-    //     Debug.Log("We're Connected and in a room now!");
+        Debug.Log("We're Connected and in a room now!");
 
     //     Invoke("PhotonInit", 10);
     // }
