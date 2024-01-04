@@ -1,0 +1,38 @@
+# Material file for bbhouse.obj
+
+newmtl _vent
+	Ns 0
+	d 1
+	illum 2
+	Kd 1.0 1.0 1.0
+	Ks 0.0 0.0 0.0
+	Ka 0.2 0.2 0.2
+	map_Kd tex1_64x64_0bdb5d4700db23a0_cf74500e6f62f5a2_9.png
+
+newmtl window
+	Ns 0
+	d 1
+	illum 2
+	Kd 1.0 1.0 1.0
+	Ks 0.0 0.0 0.0
+	Ka 0.2 0.2 0.2
+	map_Kd tex1_64x64_84c18e34ca8508ad_f4abc1e678d3a767_9.png
+
+newmtl door
+	Ns 0
+	d 1
+	illum 2
+	Kd 1.0 1.0 1.0
+	Ks 0.0 0.0 0.0
+	Ka 0.2 0.2 0.2
+	map_Kd tex1_64x64_529903217dcfbd72_36748963d7b1548e_9.png
+
+newmtl building
+	Ns 0
+	d 1
+	illum 2
+	Kd 1.0 1.0 1.0
+	Ks 0.0 0.0 0.0
+	Ka 0.2 0.2 0.2
+	map_Kd tex1_64x64_a72a49adfefd353f_ec6d568730aea760_9.png
+
