@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-
 public class RoomManager : MonoBehaviourPunCallbacks
 {
     public GameObject player;
@@ -13,7 +12,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-         Debug.Log("Connecting...");
+        Debug.Log("Connecting...");
 
         PhotonNetwork.ConnectUsingSettings();
     }
@@ -28,7 +27,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     }
 
-     public override void OnJoinedLobby()
+    public override void OnJoinedLobby()
     {
         base.OnJoinedLobby();
 
@@ -36,13 +35,13 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
         Debug.Log("We're Connected and in a room now!");
 
-        Invoke("PhotonInit", 3);
+        Invoke("PhotonInit", 10);
     }
 
     void PhotonInit() {
-      GameObject _player = PhotonNetwork.Instantiate (player.name, spawnPoint.position,Quaternion.identity);
+       GameObject _player = PhotonNetwork.Instantiate (player.name, spawnPoint.position,Quaternion.identity);
 
        _player.GetComponent<PlayerSetup>().IsLocalPlayer();
- 
+
     }
 }
