@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6292839506199729728
 Transform:
   m_ObjectHideFlags: 0
@@ -750,7 +750,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4879836906176774575}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc3f143b2bc0711499a4a636b5ea0f2b, type: 3}
   m_Name: 
@@ -912,15 +912,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 629d83758ffad164bad36431ab702b70, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.85
+      value: 2.23
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 629d83758ffad164bad36431ab702b70, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.08
+      value: -1.65
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 629d83758ffad164bad36431ab702b70, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.5
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 629d83758ffad164bad36431ab702b70, type: 3}
       propertyPath: m_LocalRotation.w
@@ -961,6 +961,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 629d83758ffad164bad36431ab702b70, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7128983430264951345}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 629d83758ffad164bad36431ab702b70, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 739031734106531451}
   m_SourcePrefab: {fileID: 100100000, guid: 629d83758ffad164bad36431ab702b70, type: 3}
 --- !u!4 &8194846800393173011 stripped
 Transform:
@@ -988,3 +991,17 @@ MonoBehaviour:
   fireRate: 100
   camera: {fileID: 9159285719082125559}
   hitVFX: {fileID: 2708598583397607911, guid: 6398d43fe79ea0140913dc5530c646af, type: 3}
+--- !u!114 &739031734106531451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8859179785509544617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27859787ed9a9124780b56f86db5a01c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swayClamp: 0.09
+  smoothing: 3
