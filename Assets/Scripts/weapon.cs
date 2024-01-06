@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using Photon.Pun;
+using TMPro;
+using UnityEngine;
 
-public class weapon : MonoBehaviour
+public class Wepon : MonoBehaviour
 {
-   public int damage;
+    public int damage;
 
     public float fireRate;
 
@@ -13,8 +14,54 @@ public class weapon : MonoBehaviour
 
     private float nextFire;
 
+    [Header("Ammo")]
+    public int mag = 5;
+    public int ammo = 30;
+    public int magAmmo = 30;
+
     [Header("VFX")]
     public GameObject hitVFX;
+
+    [Header("UI")]
+    public TextMeshProUGUI ammoText;
+    public TextMeshProUGUI magText;
+
+    [Header("Animation")]
+
+    public Animation animation;
+    public AnimationClip reload;
+    
+    // 11
+    // [Header("Recoil Settings")]
+    // [Range(0,1)]
+    // public float recoilPercant = 0.3f;
+
+    // [Range(0,2)]
+    // public float recoverPercent = 0.7f;
+
+    // [Space]
+    // public float recoilUp = 0.05f;
+    // public float recoilBack = 0.05f;
+
+
+    // private Vector3 originalPosition;
+    // private Vector3 recoilVelocity = Vector3.zero;
+
+    // private float recoilLenght;
+    // private float recoverLenght;
+    // private bool recoiling;
+    // private bool recovering;
+    // 11
+
+    void Start() {
+        magText.text = mag.ToString();
+        ammoText.text = ammo + "/" + magAmmo;
+
+        // originalPosition = transform.localPosition;
+
+        // recoilLenght =  0;
+        // recoverLenght =  1 / fireRate * recoverPercent;
+    }
 
 
     // Update is called once per frame
@@ -24,14 +71,45 @@ public class weapon : MonoBehaviour
             nextFire -= Time.deltaTime;
         }
 
-        if (Input.GetButton("Fire1") && nextFire <=0) {
+        if (Input.GetButton("Fire1") && nextFire <=0 && ammo > 0 && animation.isPlaying==false) {
             nextFire = 1 / fireRate;
+
+            ammo--;
+
+        magText.text = mag.ToString();
+        ammoText.text = ammo + "/" + magAmmo;
 
             Fire();
         }
+
+        if (Input.GetKeyDown(KeyCode.R)) {
+            Reload();
+        }
+
+        // if (recoiling) {
+        //     Recoil();
+        // }
+
+        // if (recovering) {
+        //     Recovering();
+        // }
+    }
+    void Reload(){
+        GetComponent<Animation>().Play(reload.name);
+        if (mag > 0) {
+            mag--;
+
+            ammo = magAmmo;
+        }
+
+        magText.text = mag.ToString();
+        ammoText.text = ammo + "/" + magAmmo;
     }
 
     void Fire() {
+
+        // recoiling = true;
+        // recovering = false;
         Ray ray = new Ray(camera.transform.position,camera.transform.forward);
 
         RaycastHit hit;
@@ -43,4 +121,25 @@ public class weapon : MonoBehaviour
             }
         }
     }
+
+    // 11
+    // void Recoil() {
+    //     Vector3 finalPosition = new Vector3(originalPosition.x,originalPosition.y+recoilUp,originalPosition.z-recoilBack);
+    //     transform.localPosition = Vector3.SmoothDamp(transform.localPosition,finalPosition,ref recoilVelocity,recoilLenght);
+    //     if (transform.localPosition == finalPosition) {
+    //         recoiling = false;
+    //         recovering = true;
+    //     }
+    // }
+
+    //     void Recovering() {
+    //     Vector3 finalPosition = originalPosition;
+    //     transform.localPosition = Vector3.SmoothDamp(transform.localPosition,finalPosition,ref recoilVelocity,recoverLenght);
+    //     if (transform.localPosition == finalPosition) {
+    //         recoiling = false;
+    //         recovering = false;
+    //     }
+    // }
+    // 11
+
 }
