@@ -31,36 +31,36 @@ public class Wepon : MonoBehaviour
     public Animation animation;
     public AnimationClip reload;
     
-    // 11
-    // [Header("Recoil Settings")]
-    // [Range(0,1)]
-    // public float recoilPercant = 0.3f;
+    
+    [Header("Recoil Settings")]
+    [Range(0,1)]
+    public float recoilPercant = 0.3f;
 
-    // [Range(0,2)]
-    // public float recoverPercent = 0.7f;
+    [Range(0,2)]
+    public float recoverPercent = 0.7f;
 
-    // [Space]
-    // public float recoilUp = 0.05f;
-    // public float recoilBack = 0.05f;
+    [Space]
+    public float recoilUp = 0.05f;
+    public float recoilBack = 0.05f;
 
 
-    // private Vector3 originalPosition;
-    // private Vector3 recoilVelocity = Vector3.zero;
+    private Vector3 originalPosition;
+    private Vector3 recoilVelocity = Vector3.zero;
 
-    // private float recoilLenght;
-    // private float recoverLenght;
-    // private bool recoiling;
-    // private bool recovering;
-    // 11
+    private float recoilLenght;
+    private float recoverLenght;
+    private bool recoiling;
+    private bool recovering;
+    
 
     void Start() {
         magText.text = mag.ToString();
         ammoText.text = ammo + "/" + magAmmo;
 
-        // originalPosition = transform.localPosition;
+        originalPosition = transform.localPosition;
 
-        // recoilLenght =  0;
-        // recoverLenght =  1 / fireRate * recoverPercent;
+        recoilLenght =  0;
+        recoverLenght =  1 / fireRate * recoverPercent;
     }
 
 
@@ -86,13 +86,13 @@ public class Wepon : MonoBehaviour
             Reload();
         }
 
-        // if (recoiling) {
-        //     Recoil();
-        // }
+        if (recoiling) {
+            Recoil();
+        }
 
-        // if (recovering) {
-        //     Recovering();
-        // }
+        if (recovering) {
+            Recovering();
+        }
     }
     void Reload(){
         GetComponent<Animation>().Play(reload.name);
@@ -108,8 +108,8 @@ public class Wepon : MonoBehaviour
 
     void Fire() {
 
-        // recoiling = true;
-        // recovering = false;
+        recoiling = true;
+        recovering = false;
         Ray ray = new Ray(camera.transform.position,camera.transform.forward);
 
         RaycastHit hit;
@@ -122,24 +122,23 @@ public class Wepon : MonoBehaviour
         }
     }
 
-    // 11
-    // void Recoil() {
-    //     Vector3 finalPosition = new Vector3(originalPosition.x,originalPosition.y+recoilUp,originalPosition.z-recoilBack);
-    //     transform.localPosition = Vector3.SmoothDamp(transform.localPosition,finalPosition,ref recoilVelocity,recoilLenght);
-    //     if (transform.localPosition == finalPosition) {
-    //         recoiling = false;
-    //         recovering = true;
-    //     }
-    // }
+    void Recoil() {
+        Vector3 finalPosition = new Vector3(originalPosition.x,originalPosition.y+recoilUp,originalPosition.z-recoilBack);
+        transform.localPosition = Vector3.SmoothDamp(transform.localPosition,finalPosition,ref recoilVelocity,recoilLenght);
+        if (transform.localPosition == finalPosition) {
+            recoiling = false;
+            recovering = true;
+        }
+    }
 
-    //     void Recovering() {
-    //     Vector3 finalPosition = originalPosition;
-    //     transform.localPosition = Vector3.SmoothDamp(transform.localPosition,finalPosition,ref recoilVelocity,recoverLenght);
-    //     if (transform.localPosition == finalPosition) {
-    //         recoiling = false;
-    //         recovering = false;
-    //     }
-    // }
-    // 11
+        void Recovering() {
+        Vector3 finalPosition = originalPosition;
+        transform.localPosition = Vector3.SmoothDamp(transform.localPosition,finalPosition,ref recoilVelocity,recoverLenght);
+        if (transform.localPosition == finalPosition) {
+            recoiling = false;
+            recovering = false;
+        }
+    }
+
 
 }

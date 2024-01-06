@@ -1141,6 +1141,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 5119511295540130974}
   camera: {fileID: 1614900697551635812}
+  nickname: 
+  nicknameText: {fileID: 0}
 --- !u!114 &5814725455232827142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1285,6 +1287,10 @@ MonoBehaviour:
   magText: {fileID: 175316468845429233}
   animation: {fileID: 1409631442994627628}
   reload: {fileID: 7400000, guid: 8593d50b88d46c44d85c9a3f1dade1bf, type: 2}
+  recoilPercant: 0.3
+  recoverPercent: 0.7
+  recoilUp: 0.05
+  recoilBack: 0.05
 --- !u!111 &1409631442994627628
 Animation:
   m_ObjectHideFlags: 0
