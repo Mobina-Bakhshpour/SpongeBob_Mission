@@ -20,6 +20,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public GameObject nameUI;
     public GameObject connectingUI;
     private string nickname="undefined";
+
     // Start is called before the first frame update
 
     void Awake() {

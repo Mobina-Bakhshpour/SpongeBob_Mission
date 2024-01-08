@@ -7,6 +7,10 @@ public class WeaponSwitcher : MonoBehaviour
     private int selectedWeaopn = 0;
     public Animation _animation;
     public AnimationClip changeWeapons;
+
+    public AudioClip auC;
+    public AudioSource auS;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,27 +23,35 @@ public class WeaponSwitcher : MonoBehaviour
         int previousSelectedWeapon = selectedWeaopn;
         if(Input.GetKeyDown(KeyCode.Alpha1)){
             selectedWeaopn = 0;
+            auS.PlayOneShot(auC);
         }
         if(Input.GetKeyDown(KeyCode.Alpha2)){
             selectedWeaopn = 1;
+            auS.PlayOneShot(auC);
         }
         if(Input.GetKeyDown(KeyCode.Alpha3)){
             selectedWeaopn = 2;
+            auS.PlayOneShot(auC);
         }
         if(Input.GetKeyDown(KeyCode.Alpha4)){
             selectedWeaopn = 3;
+            auS.PlayOneShot(auC);
         }
         if(Input.GetKeyDown(KeyCode.Alpha5)){
             selectedWeaopn = 4;
+            auS.PlayOneShot(auC);
         }
         if(Input.GetKeyDown(KeyCode.Alpha6)){
             selectedWeaopn = 5;
+            auS.PlayOneShot(auC);
         }
         if(Input.GetAxis("Mouse ScrollWheel") < 0){
             if(selectedWeaopn <= 0 && selectedWeaopn <= 5){
                 selectedWeaopn = transform.childCount + 1;
+                auS.PlayOneShot(auC);
             }else{
                 selectedWeaopn -=1;
+                auS.PlayOneShot(auC);
             }
         }
         if(previousSelectedWeapon != selectedWeaopn){

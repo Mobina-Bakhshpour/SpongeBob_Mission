@@ -51,6 +51,10 @@ public class Wepon : MonoBehaviour
     private float recoverLenght;
     private bool recoiling;
     private bool recovering;
+
+    [Header("SOUND")]
+    public AudioClip auC;
+    public AudioSource auS;
     
 
     void Start() {
@@ -101,13 +105,12 @@ public class Wepon : MonoBehaviour
 
             ammo = magAmmo;
         }
-
         magText.text = mag.ToString();
         ammoText.text = ammo + "/" + magAmmo;
     }
 
     void Fire() {
-
+        auS.PlayOneShot(auC);
         recoiling = true;
         recovering = false;
         Ray ray = new Ray(camera.transform.position,camera.transform.forward);
