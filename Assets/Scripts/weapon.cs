@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using TMPro;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Wepon : MonoBehaviour
 {
+    public Image ammoCircle;
+
     public int damage;
 
     public float fireRate;
@@ -55,8 +58,11 @@ public class Wepon : MonoBehaviour
     [Header("SOUND")]
     public AudioClip auC;
     public AudioSource auS;
-    
 
+    void SetAmmo(){
+        ammoCircle.fillAmount=(float)ammo/magAmmo;
+    }
+    
     void Start() {
         magText.text = mag.ToString();
         ammoText.text = ammo + "/" + magAmmo;
@@ -65,6 +71,8 @@ public class Wepon : MonoBehaviour
 
         recoilLenght =  0;
         recoverLenght =  1 / fireRate * recoverPercent;
+            SetAmmo();
+
     }
 
 
@@ -82,6 +90,8 @@ public class Wepon : MonoBehaviour
 
         magText.text = mag.ToString();
         ammoText.text = ammo + "/" + magAmmo;
+            SetAmmo();
+
 
             Fire();
         }
@@ -107,6 +117,8 @@ public class Wepon : MonoBehaviour
         }
         magText.text = mag.ToString();
         ammoText.text = ammo + "/" + magAmmo;
+        SetAmmo();
+
     }
 
     void Fire() {
