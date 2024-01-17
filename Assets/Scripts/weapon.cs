@@ -7,6 +7,11 @@ using UnityEngine;
 
 public class Wepon : MonoBehaviour
 {
+
+    private int score = 0;
+    private int score1 = 0;
+
+
     public Image ammoCircle;
 
     public int damage;
@@ -26,8 +31,11 @@ public class Wepon : MonoBehaviour
     public GameObject hitVFX;
 
     [Header("UI")]
+    //public TextMeshProUGUI scoreText;
     public TextMeshProUGUI ammoText;
     public TextMeshProUGUI magText;
+    public TextMeshProUGUI scoreText;
+    
 
     [Header("Animation")]
 
@@ -58,6 +66,9 @@ public class Wepon : MonoBehaviour
     [Header("SOUND")]
     public AudioClip auC;
     public AudioSource auS;
+
+    public TextMeshProUGUI ScoreText { get => scoreText; set => scoreText = value; }
+    public TextMeshProUGUI ScoreText1 { get => scoreText; set => scoreText = value; }
 
     void SetAmmo(){
         ammoCircle.fillAmount=(float)ammo/magAmmo;
@@ -94,6 +105,9 @@ public class Wepon : MonoBehaviour
 
 
             Fire();
+            if(score>=5){
+                score1=score/5;
+                scoreText.text = score1.ToString();
         }
 
         if (Input.GetKeyDown(KeyCode.R)) {
@@ -108,8 +122,10 @@ public class Wepon : MonoBehaviour
             Recovering();
         }
     }
+    }
     void Reload(){
-        GetComponent<Animation>().Play(reload.name);
+        animation.Play(reload.name);
+        //GetComponent<Animation>().Play(reload.name);
         if (mag > 0) {
             mag--;
 
@@ -128,14 +144,29 @@ public class Wepon : MonoBehaviour
         Ray ray = new Ray(camera.transform.position,camera.transform.forward);
 
         RaycastHit hit;
+        //PhotonNetwork.LocalPlayer.AddScore(1);
 
         if (Physics.Raycast(ray.origin, ray.direction, out hit, 100f)) {
             PhotonNetwork.Instantiate(hitVFX.name,hit.point,Quaternion.identity);
             if (hit.transform.gameObject.GetComponent<Health>()) {
                 hit.transform.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All,damage);
+                
             }
+                //PhotonNetwork.LocalPlayer.AddScore(damage);
+                // if(damage > hit.transform.gameObject.GetComponent<Health>().health)
+                // {
+                //     //Kill
+                //     PhotonNetwork.LocalPlayer.AddScore(100);
+                //     // RoomManager.instance.Kills++;
+                //     // RoomManager.instance.SetHashes();
+                // }
+                if(hit.transform.gameObject.GetComponent<target>()){
+                    hit.transform.gameObject.GetComponent<PhotonView>().RPC("takedamage", RpcTarget.All,damage);
+                    score+=1;
+            } 
+           }
         }
-    }
+    
 
     void Recoil() {
         Vector3 finalPosition = new Vector3(originalPosition.x,originalPosition.y+recoilUp,originalPosition.z-recoilBack);
@@ -154,6 +185,7 @@ public class Wepon : MonoBehaviour
             recovering = false;
         }
     }
-
-
 }
+
+
+

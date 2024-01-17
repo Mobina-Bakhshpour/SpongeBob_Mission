@@ -17,10 +17,13 @@ public class PlayerSetup : MonoBehaviour
     movement.enabled = true;
     camera.SetActive(true);
     }
+
     [PunRPC]
     public void SetNickName(string _name) {
         nickname = _name;
 
         nicknameText.text = nickname;
     }
+
+
 }
