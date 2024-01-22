@@ -10,12 +10,18 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public static RoomManager instance;
     public GameObject player;
     public GameObject enemy;
+    public GameObject enemy1;
 
-    float x;
-    float y;
-    float z;
+    public int score = 0;
+
+    float x , x1;
+    float y ,y1;
+    float z ,z1;
     Vector3 pos;
-    Vector3 pos1;
+    Vector3 pos1 ,pos2;
+
+    public Animation _animation;
+    public AnimationClip movejellyfish;
 
 
     bool joined=false;
@@ -139,8 +145,17 @@ public void Respawnenemy() {
             z = Random.Range(20, 986);
             pos1 = new Vector3(x, y, z);
 
+
+            x1 = Random.Range(30, 968);
+            y1 = 5;
+            z1 = Random.Range(20, 986);
+            pos2 = new Vector3(x1, y1, z1);
+
             // roomCam.SetActive(false);
+            //_animation.Stop();
             GameObject _playert = PhotonNetwork.Instantiate (enemy.name, pos1,Quaternion.identity);
+            GameObject _playert1 = PhotonNetwork.Instantiate (enemy1.name, pos2,Quaternion.identity);
+            _animation.Play(movejellyfish.name);
         //     i+=1;
         // }
 

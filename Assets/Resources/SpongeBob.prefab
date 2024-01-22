@@ -1644,6 +1644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a65954b1f55ad54181ae969eb7271f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  room: {fileID: 0}
   ammoCircle: {fileID: 3234711959725140369}
   damage: 10
   fireRate: 10
@@ -1801,6 +1802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a65954b1f55ad54181ae969eb7271f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  room: {fileID: 0}
   ammoCircle: {fileID: 3234711959725140369}
   damage: 6
   fireRate: 8
@@ -1953,6 +1955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a65954b1f55ad54181ae969eb7271f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  room: {fileID: 0}
   ammoCircle: {fileID: 3234711959725140369}
   damage: 9
   fireRate: 9
@@ -2649,6 +2652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a65954b1f55ad54181ae969eb7271f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  room: {fileID: 0}
   ammoCircle: {fileID: 3234711959725140369}
   damage: 12
   fireRate: 12
@@ -2850,6 +2854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a65954b1f55ad54181ae969eb7271f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  room: {fileID: 0}
   ammoCircle: {fileID: 3234711959725140369}
   damage: 2
   fireRate: 5
@@ -3038,6 +3043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a65954b1f55ad54181ae969eb7271f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  room: {fileID: 0}
   ammoCircle: {fileID: 3234711959725140369}
   damage: 3
   fireRate: 8

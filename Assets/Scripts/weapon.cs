@@ -7,8 +7,9 @@ using UnityEngine;
 
 public class Wepon : MonoBehaviour
 {
+    public RoomManager room;
 
-    private int score = 0;
+    // public int score = 0;
     private int score1 = 0;
 
 
@@ -105,10 +106,11 @@ public class Wepon : MonoBehaviour
 
 
             Fire();
-            if(score>=5){
-                score1=score/5;
-                scoreText.text = score1.ToString();
-        }
+            room=FindObjectOfType<RoomManager>();
+            // if(score>=5){
+            //     score1 =score/5;
+                scoreText.text = room.score.ToString();
+        //}
 
         if (Input.GetKeyDown(KeyCode.R)) {
             Reload();
@@ -125,7 +127,7 @@ public class Wepon : MonoBehaviour
     }
     void Reload(){
         animation.Play(reload.name);
-        //GetComponent<Animation>().Play(reload.name);
+        GetComponent<Animation>().Play(reload.name);
         if (mag > 0) {
             mag--;
 
@@ -162,7 +164,7 @@ public class Wepon : MonoBehaviour
                 // }
                 if(hit.transform.gameObject.GetComponent<target>()){
                     hit.transform.gameObject.GetComponent<PhotonView>().RPC("takedamage", RpcTarget.All,damage);
-                    score+=1;
+                    //score+=1;
             } 
            }
         }

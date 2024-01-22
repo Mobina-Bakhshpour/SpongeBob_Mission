@@ -8,7 +8,8 @@ using UnityEngine;
 public class target : MonoBehaviour
 {
     public float Heealth=50f;
-    public float s=0;
+    //public float s=0;
+    public RoomManager room;
 
 
     [PunRPC]
@@ -21,5 +22,7 @@ public class target : MonoBehaviour
 
     void Die(){
         Destroy(gameObject);
+        room=FindObjectOfType<RoomManager>();
+        room.score+=1;
     }
 }
