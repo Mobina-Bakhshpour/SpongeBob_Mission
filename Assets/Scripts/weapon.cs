@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Wepon : MonoBehaviour
 {
-    public RoomManager room;
+    // public RoomManager room;
 
     // public int score = 0;
     private int score1 = 0;
@@ -102,15 +102,12 @@ public class Wepon : MonoBehaviour
 
         magText.text = mag.ToString();
         ammoText.text = ammo + "/" + magAmmo;
-            SetAmmo();
-
-
+        SetAmmo();
+            
             Fire();
-            room=FindObjectOfType<RoomManager>();
-            // if(score>=5){
-            //     score1 =score/5;
-                scoreText.text = room.score.ToString();
-        //}
+            // room=FindObjectOfType<RoomManager>();
+            // scoreText.text = room.score.ToString();
+        }
 
         if (Input.GetKeyDown(KeyCode.R)) {
             Reload();
@@ -124,10 +121,10 @@ public class Wepon : MonoBehaviour
             Recovering();
         }
     }
-    }
+    
     void Reload(){
-        animation.Play(reload.name);
-        GetComponent<Animation>().Play(reload.name);
+       animation.Play(reload.name);
+        //GetComponent<Animation>().Play(reload.name);
         if (mag > 0) {
             mag--;
 
@@ -154,19 +151,16 @@ public class Wepon : MonoBehaviour
                 hit.transform.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All,damage);
                 
             }
-                //PhotonNetwork.LocalPlayer.AddScore(damage);
-                // if(damage > hit.transform.gameObject.GetComponent<Health>().health)
-                // {
-                //     //Kill
-                //     PhotonNetwork.LocalPlayer.AddScore(100);
-                //     // RoomManager.instance.Kills++;
-                //     // RoomManager.instance.SetHashes();
-                // }
-                if(hit.transform.gameObject.GetComponent<target>()){
+            if(hit.transform.gameObject.GetComponent<target>()){
                     hit.transform.gameObject.GetComponent<PhotonView>().RPC("takedamage", RpcTarget.All,damage);
                     //score+=1;
             } 
+            if(hit.transform.gameObject.GetComponent<enemyFish>()){
+                    hit.transform.gameObject.GetComponent<PhotonView>().RPC("takedamageFish", RpcTarget.All,damage);
+                    Debug.Log("kill");
+            } 
            }
+           Debug.Log("kill");
         }
     
 

@@ -20,8 +20,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
     Vector3 pos;
     Vector3 pos1 ,pos2;
 
-    public Animation _animation;
-    public AnimationClip movejellyfish;
+    // public Animation _animation;
+    // public AnimationClip movejellyfish;
 
 
     bool joined=false;
@@ -154,8 +154,8 @@ public void Respawnenemy() {
             // roomCam.SetActive(false);
             //_animation.Stop();
             GameObject _playert = PhotonNetwork.Instantiate (enemy.name, pos1,Quaternion.identity);
-            GameObject _playert1 = PhotonNetwork.Instantiate (enemy1.name, pos2,Quaternion.identity);
-            _animation.Play(movejellyfish.name);
+            GameObject _playert1 = PhotonNetwork.Instantiate (enemy1.name,  pos2,Quaternion.identity);
+            // _animation.Play(movejellyfish.name);
         //     i+=1;
         // }
 

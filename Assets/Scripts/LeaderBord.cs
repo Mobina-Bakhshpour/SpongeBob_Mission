@@ -9,7 +9,7 @@ using Photon.Pun.UtilityScripts;
 
 public class LeaderBord : MonoBehaviour
 {
-    public RoomManager room;
+    public Score scorevalue;
     //private string viewScore;
     public GameObject playerHolder;
 
@@ -47,11 +47,12 @@ public class LeaderBord : MonoBehaviour
 
 
             nameTexts[i].text = player.NickName;
-            room=FindObjectOfType<RoomManager>();
-            // viewScore = weapon.score.ToString();
-            // Debug.Log(weapon.score);
-             scoreTexts[i].text = player.GetScore().ToString();
-            scoreTexts[i].text = room.score.ToString();
+            scorevalue=FindObjectOfType<Score>();
+            scoreTexts[i].text = player.GetScore().ToString();
+            if(scorevalue){
+                scoreTexts[i].text = scorevalue.score.ToString();
+            }
+           
             i++;
         }
     }
