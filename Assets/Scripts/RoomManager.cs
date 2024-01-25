@@ -11,14 +11,15 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public GameObject player;
     public GameObject enemy;
     public GameObject enemy1;
+    public GameObject hamburger;
 
     public int score = 0;
 
-    float x , x1;
-    float y ,y1;
-    float z ,z1;
+    float x , x1 ,xlife;
+    float y ,y1,ylife;
+    float z ,z1,zlife;
     Vector3 pos;
-    Vector3 pos1 ,pos2;
+    Vector3 pos1 ,pos2,poslife;
 
     // public Animation _animation;
     // public AnimationClip movejellyfish;
@@ -26,7 +27,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     bool joined=false;
 
-    int joined1=15;
+    int joined1=10;
 
     [Space]
     public Transform  spawnPoint;
@@ -39,6 +40,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     [Space]
     public GameObject nameUI;
     public GameObject connectingUI;
+    public GameObject scenarioUI;
     private string nickname="undefined";
 
     [HideInInspector]
@@ -54,6 +56,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     public void ChangeNickname(string _name) {
         nickname = _name;
+    }
+
+    public void JoinScenario() {
+        scenarioUI.SetActive(false);
+        nameUI.SetActive(true);
     }
     public void JoinRoomButtonPressed() {
         Debug.Log("Connecting...");
@@ -75,6 +82,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
                 joined1+=10;
                 Invoke("Respawnenemy", joined1);
+                Invoke("RespawnHamburger", joined1);
             
         }
 
@@ -100,6 +108,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
         Invoke("RespawnPlayer", 10);
         Invoke("Respawnenemy", joined1);
+        Invoke("RespawnHamburger", joined1);
 
         joined=true;
     }
@@ -151,6 +160,7 @@ public void Respawnenemy() {
             z1 = Random.Range(20, 986);
             pos2 = new Vector3(x1, y1, z1);
 
+
             // roomCam.SetActive(false);
             //_animation.Stop();
             GameObject _playert = PhotonNetwork.Instantiate (enemy.name, pos1,Quaternion.identity);
@@ -165,22 +175,12 @@ public void Respawnenemy() {
         // _player.GetComponent<PhotonView>().RPC("SetNickName",RpcTarget.All,nickname);
 
     }
-
-
-    // public void SetHashes()
-    // {
-    //     try
-    // {
-    //     Hashtable hash = PhotonNetwork.LocalPlayer.CustomProperties;
-    //     hash["Kills"] = Kills;
-    //     hash["deaths"] = deaths;
-    //     PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
-    // }
-    //     catch
-    // {
-    //     //do nothing
-    // }
-    // }
-
+    public void RespawnHamburger() {
+        xlife = Random.Range(30, 968);
+            ylife = 5;
+            zlife = Random.Range(20, 986);
+            poslife = new Vector3(xlife, ylife, zlife);
+            GameObject _hamburger = PhotonNetwork.Instantiate (hamburger.name,poslife,Quaternion.identity);
+    }
 
 }

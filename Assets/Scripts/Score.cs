@@ -4,6 +4,7 @@ using Photon.Pun;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
+
 public class Score : MonoBehaviour
 { 
     public int score=0;
@@ -15,9 +16,7 @@ public class Score : MonoBehaviour
 
    public void AddScore (){
         score+=1;
-
-        // if(score>=5){
-        //     RestartUI.SetActive(true);
-        // }
+        
    }
+
 }

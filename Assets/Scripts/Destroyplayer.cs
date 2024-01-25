@@ -6,6 +6,9 @@ public class Destroyplayer : MonoBehaviour
 {
 
     public Health Healthplayer;
+   [Header("SOUND")]
+    public AudioClip auC;
+    public AudioSource auS;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +23,7 @@ public class Destroyplayer : MonoBehaviour
              Healthplayer=FindObjectOfType<Health>();
              Healthplayer.health -= 5;
              Healthplayer.healthBar.sizeDelta = new Vector2(Healthplayer.originalHealthBarSize * Healthplayer.health / 100f, Healthplayer.healthBar.sizeDelta.y);
-               
+             auS.PlayOneShot(auC);
              if(Healthplayer.health<=0){
                     Destroy(gameObject);
                 
