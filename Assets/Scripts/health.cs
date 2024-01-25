@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
 
     public RectTransform healthBar;
 
-    private float originalHealthBarSize;
+    public float originalHealthBarSize;
 
 
     // [Header("UI")]

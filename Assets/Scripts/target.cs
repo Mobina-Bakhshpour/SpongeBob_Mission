@@ -10,40 +10,19 @@ public class target : MonoBehaviour
     public float Heealth=50f;
     //public float s=0;
     public Score scorevalue;
-    //public Animation _animation;
-    //public AnimationClip movejellyfish;
+    public float speed;
 
-    // [Header("Animation")]
-
-    // public Animation animation;
-    // public AnimationClip movejellyfish;
-
-
-    // [Header("Recoil Settings")]
-    // [Range(1,4)]
-    // public float recoilPercant = 2f;
-
-    // [Range(1,5)]
-    // public float recoverPercent = 3f;
-
-    // [Space]
-    // public float recoilUp = 0.05f;
-    // public float recoilBack = 0.05f;
-    // private Vector3 originalPosition;
-    // private Vector3 recoilVelocity = Vector3.zero;
-
-    // private float recoilLenght;
-    // private float recoverLenght;
-    // private bool recoiling;
-    // private bool recovering;
-
-    //  public float fireRate;
-
-
+    float x;
+    float y;
+    float z;
+    Vector3 pos;
 
     void Start(){
-        // recoilLenght =  0;
-        // recoverLenght =  10 / fireRate * recoverPercent;
+         x = Random.Range(30, 968);
+        y = 5;
+        z = Random.Range(20, 986);
+        pos = new Vector3(x, y, z);
+        InvokeRepeating("play", 10.0f, 20.0f);
     }
 
 
@@ -63,36 +42,17 @@ public class target : MonoBehaviour
         scorevalue.AddScore();
     }
 
-    // void Update()
-    // {
-    //     recoiling = true;
-    //     recovering = false;
+    void Update(){
+        transform.position=Vector3.MoveTowards(transform.position, pos,speed*Time.deltaTime);
+    }
 
-    //      if (recoiling) {
-    //         Recoil();
-    //     }
+    void play(){
+        x = Random.Range(30, 968);
+        y = 5;
+        z = Random.Range(20, 986);
+        pos = new Vector3(x, y, z);
+        Debug.Log("play"+transform.position);
 
-    //     if (recovering) {
-    //         Recovering();
-    //     }
-    // }
-
-    // void Recoil() {
-    //     Vector3 finalPosition = new Vector3(originalPosition.x,originalPosition.y+recoilUp,originalPosition.z-recoilBack);
-    //     transform.localPosition = Vector3.SmoothDamp(transform.localPosition,finalPosition,ref recoilVelocity,recoilLenght);
-    //     if (transform.localPosition == finalPosition) {
-    //         recoiling = false;
-    //         recovering = true;
-    //     }
-    // }
-
-    //     void Recovering() {
-    //     Vector3 finalPosition = originalPosition;
-    //     transform.localPosition = Vector3.SmoothDamp(transform.localPosition,finalPosition,ref recoilVelocity,recoverLenght);
-    //     if (transform.localPosition == finalPosition) {
-    //         recoiling = false;
-    //         recovering = false;
-    //     }
-    // }
+    }
 
 }

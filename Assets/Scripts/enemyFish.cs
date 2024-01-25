@@ -9,6 +9,12 @@ public class enemyFish : MonoBehaviour
 {
     public float Heealth=50f;
     public Score scorevalue;
+    public float speed;
+
+    float x;
+    float y;
+    float z;
+    Vector3 pos;
         // public float Heealth=50f;
 
         // public Score scorevalue;
@@ -27,5 +33,26 @@ public class enemyFish : MonoBehaviour
         scorevalue=FindObjectOfType<Score>();
         scorevalue.AddScore();
         // Debug.Log(scorevalue.score);
+    }
+
+    void Start(){
+         x = Random.Range(30, 968);
+        y = 5;
+        z = Random.Range(20, 986);
+        pos = new Vector3(x, y, z);
+        InvokeRepeating("play", 10.0f, 20.0f);
+    }
+
+     void Update(){
+        transform.position=Vector3.MoveTowards(transform.position, pos,speed*Time.deltaTime);
+    }
+
+    void play(){
+        x = Random.Range(30, 968);
+        y = 5;
+        z = Random.Range(20, 986);
+        pos = new Vector3(x, y, z);
+       // Debug.Log("play"+transform.position);
+
     }
 }
